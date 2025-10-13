@@ -41,3 +41,20 @@ public class file_searcher
                 base_name = search_name;
                 extension_name = "";
             }
+            ExecutorService thread_pool = Executors.newFixedThreadPool(drives.length);
+
+            for (File drive : drives)
+            {
+                thread_pool.submit(() -> search_in_drive(drive, base_name, extension_name));
+            }
+
+            thread_pool.shutdown();
+            try
+            {
+                thread_pool.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
+            } 
+            catch (InterruptedException e)
+            {
+                System.out.println("Search was interrupted: " + e.getMessage());
+            }
+
