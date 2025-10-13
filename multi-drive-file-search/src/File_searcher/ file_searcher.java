@@ -20,3 +20,13 @@ public class file_searcher
               System.out.println("no drives found.");
               return;
           }
+
+        for (File drive : drives)
+            System.out.println(drive.getAbsolutePath());
+
+            System.out.print("\nenter the file name you want to search (with / without extension): ");
+            String search_name = input.nextLine();
+
+            String base_name;
+            String extension_name;
+
