@@ -57,4 +57,15 @@ public class file_searcher
             {
                 System.out.println("Search was interrupted: " + e.getMessage());
             }
+            
+            if (found_files.isEmpty())
+            {
+                System.out.println("\nNo files or folders found with the name: " + search_name);
+            }
+            else
+            {
+                if (extension_name.isEmpty() && found_files.size() > 1)
+                    System.out.println("\nMultiple results found. Specify extension if you want. All found items:");
 
+                else
+                    System.out.println("\nFiles/Folders found:");
