@@ -74,3 +74,12 @@ public class file_searcher
             }
         }
     }
+    private static void search_in_drive(File folder, String base_name, String extension_name)
+    {
+        if (folder == null || !folder.exists() || !folder.canRead()) 
+            return;
+
+        File[] files_and_folders = folder.listFiles();
+        if (files_and_folders == null) 
+            return;
+        
