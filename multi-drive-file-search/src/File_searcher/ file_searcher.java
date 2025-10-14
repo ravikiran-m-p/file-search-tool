@@ -69,3 +69,8 @@ public class file_searcher
 
                 else
                     System.out.println("\nFiles/Folders found:");
+            for (File f : found_files)
+                    System.out.println(f.getAbsolutePath());
+            }
+        }
+    }
