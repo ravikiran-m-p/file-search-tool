@@ -10,14 +10,40 @@ import java.util.concurrent.*;
 
 public class file_searcher{
 
-    private static final Queue<Path> foundPaths = new ConcurrentLinkedQueue<>();
+  private static final Queue<Path> foundPaths = new ConcurrentLinkedQueue<>();
 
-    public static void main(String[] args) {
-        try (Scanner input = new Scanner(System.in)) {
-            // detectin g the files
-            System.out.println("Detecting drives...");
-            File[] drives = File.listRoots();
-            if (drives == null || drives.length == 0) {
-                System.out.println("No drives found.");
-                return;
-            }
+  public static void main(String[] args)
+  {
+      try (Scanner input = new Scanner(System.in))
+      {
+        
+      // detectin g the files
+        
+      System.out.println("Detecting drives...");
+      File[] drives = File.listRoots();
+      if (drives == null || drives.length == 0)
+      {
+        System.out.println("No drives found.");
+        return;
+      }
+      
+      for (File d : drives)
+          System.out.println(d.getAbsolutePath());
+                  
+      System.out.print("\nEnter the file/folder name to search: ");
+      String searchName = input.nextLine().trim();
+      
+      String baseName;
+      String extName;
+        
+      if (searchName.contains("."))
+      {
+        int i = searchName.lastIndexOf('.');
+        baseName = searchName.substring(0, i);
+        extName = searchName.substring(i + 1);
+      } 
+      else
+      {
+        baseName = searchName;
+        extName = "";
+      }
