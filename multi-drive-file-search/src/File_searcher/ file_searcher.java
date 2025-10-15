@@ -7,3 +7,17 @@ import java.util.List;
 import java.util.Queue;
 import java.util.Scanner;
 import java.util.concurrent.*;
+
+public class file_searcher{
+
+    private static final Queue<Path> foundPaths = new ConcurrentLinkedQueue<>();
+
+    public static void main(String[] args) {
+        try (Scanner input = new Scanner(System.in)) {
+            // detectin g the files
+            System.out.println("Detecting drives...");
+            File[] drives = File.listRoots();
+            if (drives == null || drives.length == 0) {
+                System.out.println("No drives found.");
+                return;
+            }
