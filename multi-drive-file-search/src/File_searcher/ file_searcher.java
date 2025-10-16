@@ -47,3 +47,20 @@ public class file_searcher{
         baseName = searchName;
         extName = "";
       }
+      
+      long start = System.currentTimeMillis();
+
+      try (ForkJoinPool pool = new ForkJoinPool(
+            Math.max(16, Runtime.getRuntime().availableProcessors() * 4)))
+      {
+          for (File drive : drives)
+          {
+              if (drive.exists() && drive.canRead())
+              {
+                  Path root = drive.toPath();
+                  pool.execute(new SearchTask(root, baseName, extName));
+              }
+            }
+
+      pool.shutdown();
+      pool.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
