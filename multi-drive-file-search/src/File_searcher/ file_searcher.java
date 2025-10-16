@@ -18,49 +18,66 @@ public class file_searcher{
       {
         
       // detectin g the files
-        
-      System.out.println("Detecting drives...");
-      File[] drives = File.listRoots();
-      if (drives == null || drives.length == 0)
-      {
-        System.out.println("No drives found.");
-        return;
-      }
-      
-      for (File d : drives)
-          System.out.println(d.getAbsolutePath());
-                  
-      System.out.print("\nEnter the file/folder name to search: ");
-      String searchName = input.nextLine().trim();
-      
-      String baseName;
-      String extName;
-        
-      if (searchName.contains("."))
-      {
-        int i = searchName.lastIndexOf('.');
-        baseName = searchName.substring(0, i);
-        extName = searchName.substring(i + 1);
-      } 
-      else
-      {
-        baseName = searchName;
-        extName = "";
-      }
-      
-      long start = System.currentTimeMillis();
-
-      try (ForkJoinPool pool = new ForkJoinPool(
-            Math.max(16, Runtime.getRuntime().availableProcessors() * 4)))
-      {
-          for (File drive : drives)
+              
+          System.out.println("Detecting drives...");
+          File[] drives = File.listRoots();
+          if (drives == null || drives.length == 0)
           {
-              if (drive.exists() && drive.canRead())
+            System.out.println("No drives found.");
+            return;
+          }
+            
+          for (File d : drives)
+            System.out.println(d.getAbsolutePath());
+                        
+          System.out.print("\nEnter the file/folder name to search: ");
+          String searchName = input.nextLine().trim();
+            
+          String baseName;
+          String extName;
+              
+          if (searchName.contains("."))
+          {
+              int i = searchName.lastIndexOf('.');
+              baseName = searchName.substring(0, i);
+              extName = searchName.substring(i + 1);
+            } 
+          else
+          {
+              baseName = searchName;
+              extName = "";
+          }
+            
+          long start = System.currentTimeMillis();
+      
+          try (ForkJoinPool pool = new ForkJoinPool(Math.max(16, Runtime.getRuntime().availableProcessors() * 4)))
+          {
+              for (File drive : drives)
               {
-                  Path root = drive.toPath();
-                  pool.execute(new SearchTask(root, baseName, extName));
+                  if (drive.exists() && drive.canRead())
+                  {
+                      Path root = drive.toPath();
+                      pool.execute(new SearchTask(root, baseName, extName));
+                  }
               }
-            }
-
-      pool.shutdown();
-      pool.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
+      
+              pool.shutdown();
+              pool.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
+          
+              long end = System.currentTimeMillis();
+          
+              if (foundPaths.isEmpty())
+                  System.out.println("\nNo files or folders found named: " + searchName);
+              else 
+              {
+                  System.out.println("\nFiles/Folders found:");
+                  foundPaths.forEach(p -> System.out.println(p.toAbsolutePath()));
+              }
+              System.out.printf("\nSearch completed in %.2f seconds using %d threads.%n",(end - start) / 1000.0, pool.getParallelism());
+          }
+      }
+      catch (Exception e)
+      {
+        e.printStackTrace();
+      }
+  }
