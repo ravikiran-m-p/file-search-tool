@@ -81,3 +81,15 @@ public class file_searcher{
         e.printStackTrace();
       }
   }
+
+   static class SearchTask extends RecursiveAction {
+        private final Path dir;
+        private final String base;
+        private final String ext;
+
+        SearchTask(Path dir, String base, String ext) {
+            this.dir = dir;
+            this.base = base;
+            this.ext = ext;
+        }
+
