@@ -82,14 +82,22 @@ public class file_searcher{
       }
   }
 
-   static class SearchTask extends RecursiveAction {
-        private final Path dir;
-        private final String base;
-        private final String ext;
+  static class SearchTask extends RecursiveAction 
+  {
+    private final Path dir;
+    private final String base;
+    private final String ext;
 
-        SearchTask(Path dir, String base, String ext) {
-            this.dir = dir;
-            this.base = base;
-            this.ext = ext;
-        }
+    SearchTask(Path dir, String base, String ext)
+    {
+        this.dir = dir;
+        this.base = base;
+        this.ext = ext;
+    }
+    @Override
+    protected void compute()
+    {
+        try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir)) 
+        {
+          List<SearchTask> subtasks = new CopyOnWriteArrayList<>();
 
