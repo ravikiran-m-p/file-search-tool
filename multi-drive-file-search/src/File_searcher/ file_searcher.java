@@ -111,4 +111,13 @@ public class file_searcher{
                 foundPaths.add(path);
                 subtasks.add(new SearchTask(path, base, ext));
               } 
+              else
+              {
+                String name = path.getFileName().toString();
+                int dot = name.lastIndexOf('.');
+                String b = dot >= 0 ? name.substring(0, dot) : name;
+                String e = dot >= 0 ? name.substring(dot + 1) : "";
+                if (b.equalsIgnoreCase(base) &&(ext.isEmpty() || e.equalsIgnoreCase(ext)))
+                  foundPaths.add(path);
+                }
 
