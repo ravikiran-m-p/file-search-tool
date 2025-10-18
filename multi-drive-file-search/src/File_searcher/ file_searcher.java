@@ -100,4 +100,15 @@ public class file_searcher{
         try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir)) 
         {
           List<SearchTask> subtasks = new CopyOnWriteArrayList<>();
+          for (Path path : stream)
+          {
+            try 
+            {
+              if (Files.isDirectory(path, LinkOption.NOFOLLOW_LINKS))
+              {
+                String name = path.getFileName().toString();
+                if (name.equalsIgnoreCase(base))
+                foundPaths.add(path);
+                subtasks.add(new SearchTask(path, base, ext));
+              } 
 
