@@ -71,3 +71,24 @@ Compile the code:   javac -d out src/File_searcher/file_searcher.java
 
 
 Run the program:   java -cp out File_searcher.file_searcher
+
+
+## Notes
+
+- Requires read permissions for all drives to access subdirectories.
+
+- Silently skips restricted or inaccessible folders.
+
+- Handles both:
+
+File names (e.g., notes.txt)
+
+Folder names (e.g., Documents)
+
+Performance depends on:
+
+File system size
+
+Thread count
+
+System I/O speed
