@@ -81,14 +81,14 @@ Run the program:   java -cp out File_searcher.file_searcher
 
 - Handles both:
 
-File names (e.g., notes.txt)
+         File names (e.g., notes.txt)
 
-Folder names (e.g., Documents)
+         Folder names (e.g., Documents)
 
 - Performance depends on:
 
-File system size
-
-Thread count
-
-System I/O speed
+      File system size
+      
+      Thread count
+      
+      System I/O speed
