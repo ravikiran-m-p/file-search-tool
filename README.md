@@ -92,3 +92,16 @@ Run the program:   java -cp out File_searcher.file_searcher
       Thread count
       
       System I/O speed
+
+
+📈 Future Enhancements
+
+Add regex-based search for advanced matching.
+
+Include file content search (like grep).
+
+Provide a GUI version with progress visualization.
+
+Add export to file (e.g., .txt or .csv).
+
+Integrate search history or favorites.
