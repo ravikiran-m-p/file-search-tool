@@ -43,7 +43,7 @@ It leverages **Java’s ForkJoinPool** to scan all available drives in parallel,
    -  Total time taken  
    -  Number of threads used
 
-## 💻 Example Output
+##  Example Output
 
 Detecting drives... C: D: E: P:\
 
@@ -94,7 +94,7 @@ Run the program:   java -cp out File_searcher.file_searcher
       System I/O speed
 
 
-📈 Future Enhancements
+ Future Enhancements
 
 Add regex-based search for advanced matching.
 
