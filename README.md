@@ -85,7 +85,7 @@ File names (e.g., notes.txt)
 
 Folder names (e.g., Documents)
 
-Performance depends on:
+- Performance depends on:
 
 File system size
 
