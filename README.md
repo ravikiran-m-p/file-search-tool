@@ -43,3 +43,14 @@ It leverages **Java’s ForkJoinPool** to scan all available drives in parallel,
    -  Total time taken  
    -  Number of threads used
 
+## 💻 Example Output
+
+Detecting drives... C: D: E: P:\
+
+Enter the file/folder name to search: sample.txt
+
+Files/Folders found:
+C:\Users\ravikiran\Documents\sample.txt
+D:\Backup\sample.txt
+
+Search completed in 3.27 seconds using 32 threads.
