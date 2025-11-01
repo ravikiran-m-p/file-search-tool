@@ -17,3 +17,15 @@ It leverages **Java’s ForkJoinPool** to scan all available drives in parallel,
 -  Optimized for both **speed** and **accuracy**
 
 ---
+
+
+## Technologies Used
+
+| Component | Purpose |
+|------------|----------|
+| **Java 17+** | Core programming language |
+| **ForkJoinPool** | Multi-threaded parallel execution |
+| **java.nio.file.\*** | Efficient filesystem traversal |
+| **java.util.concurrent.\*** | Thread-safe concurrent data structures |
+
+---
