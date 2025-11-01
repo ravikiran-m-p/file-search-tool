@@ -29,3 +29,17 @@ It leverages **Java’s ForkJoinPool** to scan all available drives in parallel,
 | **java.util.concurrent.\*** | Thread-safe concurrent data structures |
 
 ---
+
+
+## How It Works
+
+1. **Detects all available system drives** automatically.  
+2. **Prompts the user** to enter a file or folder name.  
+3. **Creates parallel search tasks** using a `ForkJoinPool`:  
+   - Each task recursively scans directories in its assigned drive.  
+   - Matching file/folder names are stored in a **thread-safe queue**.  
+4. Once all tasks complete, the program prints:  
+   -  All matching paths  
+   -  Total time taken  
+   -  Number of threads used
+
