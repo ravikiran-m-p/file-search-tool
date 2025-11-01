@@ -63,3 +63,11 @@ Search completed in 3.27 seconds using 32 threads.
 
 1. **Clone the repository:**
    ```bash
+   https://github.com/ravikiran-m-p/file-search-tool.git
+
+Open the project in your preferred Java IDE (IntelliJ IDEA, Eclipse, VS Code, etc.)
+
+Compile the code:   javac -d out src/File_searcher/file_searcher.java
+
+
+Run the program:   java -cp out File_searcher.file_searcher
