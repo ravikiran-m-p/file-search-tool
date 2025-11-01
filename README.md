@@ -54,3 +54,12 @@ C:\Users\ravikiran\Documents\sample.txt
 D:\Backup\sample.txt
 
 Search completed in 3.27 seconds using 32 threads.
+
+
+
+---
+
+## How to Run
+
+1. **Clone the repository:**
+   ```bash
