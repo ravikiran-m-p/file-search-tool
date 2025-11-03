@@ -67,10 +67,10 @@ Search completed in 3.27 seconds using 32 threads.
 
 2. Open the project in your preferred Java IDE (IntelliJ IDEA, Eclipse, VS Code, etc.)
 
-3. Compile the code:   javac -d out src/File_searcher/file_searcher.java
+3. Compile the code: ```javac -d out src/File_searcher/file_searcher.java```
 
 
-4. Run the program:   java -cp out File_searcher.file_searcher
+4. Run the program: ``` java -cp out File_searcher.file_searcher ```
 
 
 ## Notes
