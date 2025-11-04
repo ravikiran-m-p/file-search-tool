@@ -74,6 +74,7 @@ Search completed in 3.27 seconds using 32 threads.
 
 4. Run the program: ``` java -cp out File_searcher.file_searcher ```
 
+---
 
 ## Notes
 
@@ -95,6 +96,7 @@ Search completed in 3.27 seconds using 32 threads.
       
       System I/O speed
 
+---
 
  ## Future Enhancements
 
