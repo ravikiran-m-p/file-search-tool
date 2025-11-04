@@ -43,6 +43,8 @@ It leverages **Java’s ForkJoinPool** to scan all available drives in parallel,
    -  Total time taken  
    -  Number of threads used
 
+---
+
 ##  Example Output
 
 Detecting drives... C: D: E: P:\
