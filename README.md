@@ -84,17 +84,17 @@ Search completed in 3.27 seconds using 32 threads.
 
 - Handles both:
 
-  File names (e.g., notes.txt),
+  1. File names (e.g., notes.txt),
   
-  Folder names (e.g., Documents)
+  2. Folder names (e.g., Documents)
 
 - Performance depends on:
 
-  File system size,
+  1. File system size,
       
-  Thread count,
+  2. Thread count,
       
-  System I/O speed
+  3. System I/O speed
 
 ---
 
