@@ -9,7 +9,7 @@ It leverages **Java’s ForkJoinPool** to scan all available drives in parallel,
 ## Features
 
 -  **Multi-threaded search** using Java’s `ForkJoinPool`
--  **Automatic drive detection** (e.g., `C:\`, `D:\`, `E:\`, P:\)
+-  **Automatic drive detection** (e.g., `C:\`, `D:\`, `E:\`, 'P:\')
 -  **Search by file or folder name** (case-insensitive)
 -  **Safe concurrent result collection** via `ConcurrentLinkedQueue`
 -  Displays **total search time** and **number of threads used**
