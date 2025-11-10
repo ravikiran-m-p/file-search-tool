@@ -30,7 +30,6 @@ It leverages **Java’s ForkJoinPool** to scan all available drives in parallel,
 
 ---
 
-
 ## How It Works
 
 1. **Detects all available system drives** automatically.  
