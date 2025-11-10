@@ -5,7 +5,6 @@ It leverages **Java’s ForkJoinPool** to scan all available drives in parallel,
 
 ---
 
-
 ## Features
 
 -  **Multi-threaded search** using Java’s `ForkJoinPool`
