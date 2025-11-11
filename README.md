@@ -55,7 +55,6 @@ D:\Backup\sample.txt
 
 Search completed in 3.27 seconds using 32 threads.
 
-
 ---
 
 ## How to Run
