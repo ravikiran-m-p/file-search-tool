@@ -102,5 +102,4 @@ Search completed in 3.27 seconds using 32 threads.
 - Provide a GUI version with progress visualization.
 
 - Add export to file (e.g., .txt or .csv).
-
 - Integrate search history or favorites.
