@@ -17,7 +17,6 @@ It leverages **Java’s ForkJoinPool** to scan all available drives in parallel,
 
 ---
 
-
 ## Technologies Used
 
 | Component | Purpose |
