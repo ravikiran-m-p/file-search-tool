@@ -118,7 +118,7 @@ public class file_searcher
                 if (b.equalsIgnoreCase(base) &&(ext.isEmpty() || e.equalsIgnoreCase(ext)))
                   foundPaths.add(path);
                 }
-               }
+            }
             catch (Exception ignored) 
             {
             }
