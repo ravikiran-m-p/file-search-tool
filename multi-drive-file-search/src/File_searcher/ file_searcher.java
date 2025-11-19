@@ -6,8 +6,8 @@ import java.util.Queue;
 import java.util.Scanner;
 import java.util.concurrent.*;
 
-public class file_searcher{
-
+public class file_searcher
+{
   private static final Queue<Path> foundPaths = new ConcurrentLinkedQueue<>();
 
   public static void main(String[] args)
@@ -39,7 +39,7 @@ public class file_searcher{
               int i = searchName.lastIndexOf('.');
               baseName = searchName.substring(0, i);
               extName = searchName.substring(i + 1);
-            } 
+          } 
           else
           {
               baseName = searchName;
