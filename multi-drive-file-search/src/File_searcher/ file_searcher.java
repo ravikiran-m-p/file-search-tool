@@ -15,7 +15,7 @@ public class file_searcher
       try (Scanner input = new Scanner(System.in))
       {
         
-      // detectin g the files
+      // detecting the drives
               
           System.out.println("Detecting drives...");
           File[] drives = File.listRoots();
