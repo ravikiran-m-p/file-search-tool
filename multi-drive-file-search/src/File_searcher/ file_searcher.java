@@ -74,6 +74,8 @@ public class file_searcher
                   System.out.println("\nFiles/Folders found:");
                   foundPaths.forEach(p -> System.out.println(p.toAbsolutePath()));
               }
+            
+                // print total duration and how many threads were used
               System.out.printf("\nSearch completed in %.2f seconds using %d threads.%n",(end - start) / 1000.0, pool.getParallelism());
           }
       }
@@ -82,7 +84,7 @@ public class file_searcher
         e.printStackTrace();
       }
   }
-
+// searchtask: a ForkJoin recursive action to search folders
   static class SearchTask extends RecursiveAction 
   {
     private final Path dir;
@@ -98,6 +100,7 @@ public class file_searcher
     @Override
     protected void compute()
     {
+        // try to open and read directory contents
         try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir)) 
         {
           List<SearchTask> subtasks = new CopyOnWriteArrayList<>();
