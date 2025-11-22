@@ -65,7 +65,8 @@ public class file_searcher
               pool.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
           
               long end = System.currentTimeMillis();
-          
+              
+              // --- display results ---- 
               if (foundPaths.isEmpty())
                   System.out.println("\nNo files or folders found named: " + searchName);
               else 
