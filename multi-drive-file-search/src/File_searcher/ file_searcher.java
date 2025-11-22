@@ -103,14 +103,17 @@ public class file_searcher
         // try to open and read directory contents
         try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir)) 
         {
+          // list to store child tasks (sub-directories)
           List<SearchTask> subtasks = new CopyOnWriteArrayList<>();
           for (Path path : stream)
           {
             try 
             {
+              
               if (Files.isDirectory(path, LinkOption.NOFOLLOW_LINKS))
               {
                 String name = path.getFileName().toString();
+                // folder name matches the search name
                 if (name.equalsIgnoreCase(base))
                 foundPaths.add(path);
                 subtasks.add(new SearchTask(path, base, ext));
