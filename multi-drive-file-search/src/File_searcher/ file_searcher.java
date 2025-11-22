@@ -50,7 +50,7 @@ public class file_searcher
       
           try (ForkJoinPool pool = new ForkJoinPool(Math.max(16, Runtime.getRuntime().availableProcessors() * 4)))
           {
-              // Submit a search task for each drive
+              // submit a search task for each drive
               for (File drive : drives)
               {
                   if (drive.exists() && drive.canRead())
@@ -59,8 +59,9 @@ public class file_searcher
                       pool.execute(new SearchTask(root, baseName, extName));
                   }
               }
-              // No new tasks will be submitte
+              // no new tasks will be submitted
               pool.shutdown();
+             // Wait until all tasks finish
               pool.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
           
               long end = System.currentTimeMillis();
