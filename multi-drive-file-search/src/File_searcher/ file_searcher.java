@@ -87,58 +87,58 @@ public class file_searcher
 // searchtask: a ForkJoin recursive action to search folders
   static class SearchTask extends RecursiveAction 
   {
-    private final Path dir;
-    private final String base;
-    private final String ext;
-
-    SearchTask(Path dir, String base, String ext)
-    {
-        this.dir = dir;
-        this.base = base;
-        this.ext = ext;
-    }
-    @Override
-    protected void compute()
-    {
-        // try to open and read directory contents
-        try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir)) 
-        {
-          // list to store child tasks (sub-directories)
-          List<SearchTask> subtasks = new CopyOnWriteArrayList<>();
-          for (Path path : stream)
+      private final Path dir;
+      private final String base;
+      private final String ext;
+  
+      SearchTask(Path dir, String base, String ext)
+      {
+          this.dir = dir;
+          this.base = base;
+          this.ext = ext;
+      }
+      @Override
+      protected void compute()
+      {
+          // try to open and read directory contents
+          try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir)) 
           {
-            try 
+            // list to store child tasks (sub-directories)
+            List<SearchTask> subtasks = new CopyOnWriteArrayList<>();
+            for (Path path : stream)
             {
-              
-              if (Files.isDirectory(path, LinkOption.NOFOLLOW_LINKS))
-              {
-                String name = path.getFileName().toString();
-                // folder name matches the search name
-                if (name.equalsIgnoreCase(base))
-                foundPaths.add(path);
-                subtasks.add(new SearchTask(path, base, ext));
-              } 
-              else
-              {
-                String name = path.getFileName().toString();
-                int dot = name.lastIndexOf('.');
-                String b = dot >= 0 ? name.substring(0, dot) : name;
-                String e = dot >= 0 ? name.substring(dot + 1) : "";
-                if (b.equalsIgnoreCase(base) &&(ext.isEmpty() || e.equalsIgnoreCase(ext)))
-                  foundPaths.add(path);
+                try 
+                {
+                  
+                  if (Files.isDirectory(path, LinkOption.NOFOLLOW_LINKS))
+                  {
+                    String name = path.getFileName().toString();
+                    // folder name matches the search name
+                    if (name.equalsIgnoreCase(base))
+                    foundPaths.add(path);
+                    subtasks.add(new SearchTask(path, base, ext));
+                  } 
+                  else
+                  {
+                    String name = path.getFileName().toString();
+                    int dot = name.lastIndexOf('.');
+                    String b = dot >= 0 ? name.substring(0, dot) : name;
+                    String e = dot >= 0 ? name.substring(dot + 1) : "";
+                    if (b.equalsIgnoreCase(base) &&(ext.isEmpty() || e.equalsIgnoreCase(ext)))
+                      foundPaths.add(path);
+                  }
                 }
-            }
-            catch (Exception ignored) 
-            {
-            }
+                catch (Exception ignored) 
+                {
+                }
           }
           invokeAll(subtasks);
-      } 
-    catch (IOException ignored)
-    {
+          } 
+        catch (IOException ignored)
+        {
+        }
     }
-}
-}
+  }
 }
 
 
